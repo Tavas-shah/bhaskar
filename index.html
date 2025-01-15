@@ -222,6 +222,66 @@
                 font-size: 48px;
             }
         }
+            .gallery-section {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: var(--text-light);
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -248,6 +308,28 @@
             <p>The Bhaskar Prabha Foundation, established in 2025, is dedicated to the study and promotion of both modern and ancient mathematics. We focus on advancing mathematical knowledge and inspiring the next generation of mathematicians through a blend of historical wisdom and contemporary methods.</p>
         </div>
     </section>
+    <section class="gallery-section" data-aos="fade-up">
+        <div class="card">
+            <h2 class="section-title">Our Moments</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
+                    <img src="Group photo 1.jpeg" alt="Group Photo 1" width="600">
+                    <div class="gallery-caption">
+                        <h3>Group Photo 1</h3>
+                        <p>A memorable moment with our foundation members</p>
+                    </div>
+                </div>
+                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
+                   <img src="Group Photo 2.jpeg" alt="Group Photo 2" width="600">
+                    <div class="gallery-caption">
+                        <h3>Group Photo 2</h3>
+                        <p>Celebrating our achievements together</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <footer class="footer">
         <div class="footer-grid">
