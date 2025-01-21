@@ -465,7 +465,7 @@ body {
     .next-btn {
         right: max(10px, env(safe-area-inset-right));
     }
-}
+
 
     .gallery-grid {
         grid-template-columns: 1fr;
