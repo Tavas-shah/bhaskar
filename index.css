@@ -114,105 +114,54 @@ body {
 .dropdown-content a:hover {
     background-color: #f8f8f8;
 }
+.container {
+            max-width: 100%;
+            margin: auto;
+            background: #1a1a1a;
+        }
+.image-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .memorial-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 2;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
 
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    text-align: center;
-    padding: 20px;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('/api/placeholder/1920/1080') center/cover no-repeat;
-    opacity: 0.1;
-    animation: rotate 60s linear infinite;
-}
-.hero-content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.hero-title {
-    position: relative; /* Change from absolute to relative */
-    font-size: 4.5rem;
-    font-weight: 800;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 1s ease-out;
-    margin: 0 auto; /* Center the title */
-    width: 90%;
-    max-width: 1200px;
-    transform: none; /* Remove transform */
-    top: auto; /* Remove top positioning */
-}
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.3);
-    border: none;
-    width: 50px; /* Slightly smaller by default */
-    height: 50px;
-    border-radius: 50%;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 2;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav-btn:hover {
-    background: rgba(0, 0, 0, 0.5);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
 .about-section {
     max-width: 1200px;
     margin: 100px auto;
     padding: 0 20px;
 }
+
 
 .card {
     background: white;
@@ -369,40 +318,7 @@ body {
     .header {
         padding: 15px 20px;
     }
-     .hero {
-        min-height: 100vh;
-        height: auto;
-        padding: 80px 20px; /* Add padding to account for fixed header */
-    }
-
-    .hero::before {
-        animation: none;
-    }
-
-    .hero-content {
-        padding: 20px 0;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    .nav-btn {
-        width: 44px; /* Minimum touch target size */
-        height: 44px;
-        background: rgba(0, 0, 0, 0.6);
-        font-size: 18px;
-    }
-
-    .prev-btn {
-        left: 10px;
-    }
-
-    .next-btn {
-        right: 10px;
-    }
+     
 
     .hamburger {
         display: flex;
@@ -485,75 +401,3 @@ body {
     
 }
 
-@media screen and (max-width: 480px) {
-    .hero {
-        padding: 60px 15px;
-    }
-
-    .hero-title {
-        font-size: 2rem;
-    }
-}
-
-/* Landscape mode */
-@media screen and (max-height: 480px) and (orientation: landscape) {
-    .hero {
-        padding: 40px 15px;
-    }
-
-    .hero-title {
-        font-size: 1.8rem;
-    }
-
-    .nav-btn {
-        transform: scale(0.8);
-    }
-}
-
-/* Fix mobile navigation */
-@media screen and (max-width: 768px) {
-    .header {
-        padding: 15px;
-    }
-
-    .nav-links {
-        background: white;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        right: 0;
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        max-height: calc(100vh - 70px);
-        overflow-y: auto;
-    }
-
-    .nav-links.active {
-        display: flex;
-    }
-
-    .dropdown-content {
-        position: static;
-        box-shadow: none;
-        margin-top: 10px;
-    }
-}
-
-/* Fix touch interactions */
-@media (hover: none) {
-    .nav-btn {
-        opacity: 1;
-        background: rgba(0, 0, 0, 0.6);
-    }
-
-    .nav-btn:active {
-        transform: translateY(-50%) scale(0.95);
-    }
-
-    .hero-content {
-        user-select: none; /* Prevent text selection on touch */
-    }
-}
