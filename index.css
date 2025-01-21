@@ -416,9 +416,25 @@ body {
         width: 100%;
         display: block;
     }
+    .nav-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .hero-title {
+        font-size: 36px; /* Further reduce font size for small screens */
+        top: 40px; /* Adjusted for mobile layout */
+    }
+
+    .hero-content {
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
+
 
     .hero-title {
         font-size: 48px;
+        top: 20px;
     }
 
     .gallery-grid {
