@@ -162,6 +162,44 @@ body {
         .next-btn {
             right: 20px;
         }
+
+
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.hero-content {
+    text-align: center;
+    color: var(--text-light);
+    z-index: 1;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 72px;
+    position: absolute;
+    top: 60px; /* Adjust this value to control how far down from the top */
+    left: 0%; /* Moves it more to the left (adjust the value as needed) */
+    transform: translateX(-50%) translateY(-50%); /* Centers vertically and adjusts horizontally */
+    font-weight: 800;
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+}
+@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
 .about-section {
     max-width: 1200px;
     margin: 100px auto;
@@ -382,31 +420,6 @@ body {
     .hero-title {
         font-size: 48px;
     }
-    .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-        opacity: 0.8; /* Always visible on mobile */
-    }
-
-    .dot {
-        width: 6px;
-        height: 6px;
-    }
-
-    .dot.active {
-        width: 18px;
-    }
-
-    /* Ensure buttons don't overlap with device UI elements */
-    .prev-btn {
-        left: max(10px, env(safe-area-inset-left));
-    }
-
-    .next-btn {
-        right: max(10px, env(safe-area-inset-right));
-    }
-
 
     .gallery-grid {
         grid-template-columns: 1fr;
@@ -428,14 +441,5 @@ body {
 
     .footer-grid {
         gap: 30px;
-    }
-}
-
-@supports (padding: max(0px)) {
-    .hero {
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
     }
 }
