@@ -5,15 +5,21 @@ document.addEventListener('DOMContentLoaded', () => {
         once: true
     });
 
-    // Header scroll effect
-   window.addEventListener('scroll', () => {
-    const container = document.querySelector('.container');
-    const header = document.querySelector('.header');
-    const headerHeight = header.offsetHeight;
-    
-    container.style.marginTop = `${headerHeight}px`;
-});
+    // Dynamic margin adjustment for the container based on header height
+    function adjustContainerMargin() {
+        const container = document.querySelector('.container');
+        const header = document.querySelector('.header');
+        const headerHeight = header.offsetHeight;
+        
+        container.style.marginTop = `${headerHeight}px`;
+    }
 
+    // Adjust margin on load, resize, and scroll
+    window.addEventListener('load', adjustContainerMargin);
+    window.addEventListener('resize', adjustContainerMargin);
+    window.addEventListener('scroll', adjustContainerMargin);
+
+    // Image slider functionality
     const images = [
         '4.png',
         '5.png',
