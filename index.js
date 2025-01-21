@@ -6,14 +6,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Header scroll effect
+   window.addEventListener('scroll', () => {
+    const container = document.querySelector('.container');
     const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
+    const headerHeight = header.offsetHeight;
+    
+    container.style.marginTop = `${headerHeight}px`;
+});
 
     const images = [
         '4.png',
