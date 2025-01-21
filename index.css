@@ -204,42 +204,6 @@ body {
     width: 20px;
     border-radius: 5px;
 }
-
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 3;
-    opacity: 0;
-    transition: all 0.4s ease;
-}
-
-.hero:hover .nav-btn {
-    opacity: 1;
-}
-
-.nav-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-50%) scale(1.1);
-}
-
-.prev-btn {
-    left: max(20px, env(safe-area-inset-left));
-}
-
-.next-btn {
-    right: max(20px, env(safe-area-inset-right));
-}
-
 .about-section {
     max-width: 1200px;
     margin: 100px auto;
