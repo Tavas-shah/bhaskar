@@ -29,79 +29,72 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentImage = 0;
     let isAnimating = false;
 
-    // Create initial slides
+    // Create slides and dots
     function createSlides() {
+        // Create slides
         images.forEach((image, index) => {
             const slide = document.createElement('div');
             slide.className = 'slide';
             slide.style.backgroundImage = `url('${image}')`;
             if (index === currentImage) slide.classList.add('active');
-            if (index === getPreviousIndex()) slide.classList.add('previous');
-            if (index === getNextIndex()) slide.classList.add('next');
             slideContainer.appendChild(slide);
         });
+
+        // Create dots
+        const dotsContainer = document.createElement('div');
+        dotsContainer.className = 'slider-dots';
+        images.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = `dot ${index === currentImage ? 'active' : ''}`;
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+        hero.appendChild(dotsContainer);
     }
 
-    function getPreviousIndex() {
-        return currentImage === 0 ? images.length - 1 : currentImage - 1;
-    }
-
-    function getNextIndex() {
-        return currentImage === images.length - 1 ? 0 : currentImage + 1;
-    }
-
-    function updateSlides(direction) {
-        if (isAnimating) return;
+    function goToSlide(index) {
+        if (isAnimating || index === currentImage) return;
         isAnimating = true;
 
         const slides = document.querySelectorAll('.slide');
-        const previousIndex = getPreviousIndex();
-        const nextIndex = getNextIndex();
+        const dots = document.querySelectorAll('.dot');
+        const direction = index > currentImage ? 1 : -1;
 
-        // Remove all classes first
-        slides.forEach(slide => {
-            slide.classList.remove('active', 'previous', 'next');
-        });
+        // Update slides
+        slides[currentImage].classList.remove('active');
+        slides[index].style.transform = `translateX(${direction * 100}%)`;
+        slides[index].classList.add('active');
 
-        if (direction === 'next') {
-            currentImage = nextIndex;
-        } else {
-            currentImage = previousIndex;
-        }
+        // Update dots
+        dots[currentImage].classList.remove('active');
+        dots[index].classList.add('active');
 
-        // Apply new classes
-        slides.forEach((slide, index) => {
-            if (index === currentImage) {
-                slide.classList.add('active');
-            } else if (index === getPreviousIndex()) {
-                slide.classList.add('previous');
-            } else if (index === getNextIndex()) {
-                slide.classList.add('next');
-            }
-        });
+        currentImage = index;
 
         setTimeout(() => {
             isAnimating = false;
-        }, 1500); // Match this with CSS transition duration
+        }, 1200);
+    }
+
+    function nextSlide() {
+        const nextIndex = (currentImage + 1) % images.length;
+        goToSlide(nextIndex);
+    }
+
+    function prevSlide() {
+        const prevIndex = currentImage === 0 ? images.length - 1 : currentImage - 1;
+        goToSlide(prevIndex);
     }
 
     // Initialize slides
     createSlides();
 
-    // Previous button click handler
-    prevBtn.addEventListener('click', () => {
-        updateSlides('prev');
-    });
-
-    // Next button click handler
-    nextBtn.addEventListener('click', () => {
-        updateSlides('next');
-    });
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
 
     // Auto-change every 5 seconds
-    let autoplayInterval = setInterval(() => {
-        updateSlides('next');
-    }, 5000);
+    let autoplayInterval = setInterval(nextSlide, 5000);
 
     // Pause autoplay on hover
     hero.addEventListener('mouseenter', () => {
@@ -110,12 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Resume autoplay when mouse leaves
     hero.addEventListener('mouseleave', () => {
-        autoplayInterval = setInterval(() => {
-            updateSlides('next');
-        }, 5000);
+        autoplayInterval = setInterval(nextSlide, 5000);
     });
 });
-
 // Rotating text animation
 const texts = ["Indian Mathematics", "Bhaskar Prabha Foundation"];
 let index = 0;
