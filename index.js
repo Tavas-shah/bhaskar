@@ -24,13 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     slideContainer.className = 'slide-container';
     hero.appendChild(slideContainer);
     
-    // Array of image paths
+    // Array of image paths - Update these with your actual image paths
     const images = ['4.png', '5.png'];
     let currentImage = 0;
     let isAnimating = false;
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let autoplayInterval;
 
     // Create slides and dots
     function createSlides() {
@@ -38,8 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
         images.forEach((image, index) => {
             const slide = document.createElement('div');
             slide.className = 'slide';
-            slide.style.backgroundImage = `url('${image}')`;
-            if (index === currentImage) slide.classList.add('active');
+            
+            // Create image element
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = `Slide ${index + 1}`;
+            
+            slide.appendChild(img);
+            
+            if (index === currentImage) {
+                slide.classList.add('active');
+            }
             slideContainer.appendChild(slide);
         });
 
@@ -63,20 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = document.querySelectorAll('.dot');
         const direction = index > currentImage ? 1 : -1;
 
-        // Update slides
+        // Remove active class from current slide and dot
         slides[currentImage].classList.remove('active');
-        slides[index].style.transform = `translateX(${direction * 100}%)`;
-        slides[index].classList.add('active');
-
-        // Update dots
         dots[currentImage].classList.remove('active');
+
+        // Add active class to new slide and dot
+        slides[index].classList.add('active');
         dots[index].classList.add('active');
 
         currentImage = index;
 
         setTimeout(() => {
             isAnimating = false;
-        }, 1200);
+        }, 800);
     }
 
     function nextSlide() {
@@ -89,94 +94,35 @@ document.addEventListener('DOMContentLoaded', () => {
         goToSlide(prevIndex);
     }
 
-    // Touch handlers
-    function handleTouchStart(e) {
+    // Initialize
+    createSlides();
+
+    // Event listeners
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+
+    // Touch support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    hero.addEventListener('touchstart', e => {
         touchStartX = e.touches[0].clientX;
-        clearInterval(autoplayInterval);
-    }
+    }, { passive: true });
 
-    function handleTouchMove(e) {
-        if (isAnimating) return;
+    hero.addEventListener('touchmove', e => {
         touchEndX = e.touches[0].clientX;
-    }
+    }, { passive: true });
 
-    function handleTouchEnd() {
+    hero.addEventListener('touchend', () => {
         const touchDiff = touchStartX - touchEndX;
-        const minSwipeDistance = 50; // Minimum distance for swipe
-
-        if (Math.abs(touchDiff) > minSwipeDistance) {
+        if (Math.abs(touchDiff) > 50) { // Minimum swipe distance
             if (touchDiff > 0) {
                 nextSlide();
             } else {
                 prevSlide();
             }
         }
-
-        // Reset touch coordinates
-        touchStartX = 0;
-        touchEndX = 0;
-
-        // Restart autoplay
-        startAutoplay();
-    }
-
-    // Initialize autoplay
-    function startAutoplay() {
-        clearInterval(autoplayInterval);
-        autoplayInterval = setInterval(nextSlide, 5000);
-    }
-
-    // Initialize slides
-    createSlides();
-
-    // Event listeners
-    prevBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        prevSlide();
     });
-    
-    nextBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        nextSlide();
-    });
-
-    // Touch events
-    hero.addEventListener('touchstart', handleTouchStart, { passive: true });
-    hero.addEventListener('touchmove', handleTouchMove, { passive: true });
-    hero.addEventListener('touchend', handleTouchEnd);
-
-    // Handle visibility change
-    document.addEventListener('visibilitychange', () => {
-        if (document.hidden) {
-            clearInterval(autoplayInterval);
-        } else {
-            startAutoplay();
-        }
-    });
-
-    // Handle resize
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(() => {
-            // Update any necessary dimensions
-            const slides = document.querySelectorAll('.slide');
-            slides.forEach(slide => {
-                slide.style.height = `${hero.offsetHeight}px`;
-            });
-        }, 250);
-    });
-
-    // Start autoplay
-    startAutoplay();
-
-    // Pause autoplay on hover (desktop only)
-    const isTouchDevice = 'ontouchstart' in window;
-    if (!isTouchDevice) {
-        hero.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-        hero.addEventListener('mouseleave', startAutoplay);
-    }
-});
 // Rotating text animation
 const texts = ["Indian Mathematics", "Bhaskar Prabha Foundation"];
 let index = 0;
