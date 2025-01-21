@@ -117,7 +117,7 @@ body {
 }
 .container {
     max-width: 100%;
-    margin: 100 auto; /* Adjust the top margin */
+    margin: 200 auto; /* Adjust the top margin */
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
 }
 
