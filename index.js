@@ -18,13 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const hero = document.getElementById('hero');
             const prevBtn = document.querySelector('.prev-btn');
             const nextBtn = document.querySelector('.next-btn');
-
+            
             // Array of image paths
             const images = ['4.png', '5.png'];
             let currentImage = 0;
 
             // Initialize first image
-            hero.style.backgroundImage = url('${images[currentImage]}');
+            hero.style.backgroundImage = `url('${images[currentImage]}')`;
 
             // Previous button click handler
             prevBtn.addEventListener('click', () => {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentImage < 0) {
                     currentImage = images.length - 1;
                 }
-                hero.style.backgroundImage = url('${images[currentImage]}');
+                hero.style.backgroundImage = `url('${images[currentImage]}')`;
             });
 
             // Next button click handler
@@ -41,18 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (currentImage >= images.length) {
                     currentImage = 0;
                 }
-                hero.style.backgroundImage = url('${images[currentImage]}');
+                hero.style.backgroundImage = `url('${images[currentImage]}')`;
             });
 
-            // Optional: Auto-change every 5 seconds
-            setInterval(() => {
-                currentImage++;
-                if (currentImage >= images.length) {
-                    currentImage = 0;
-                }
-                hero.style.backgroundImage = url('${images[currentImage]}');
-            }, 5000);
+            
         });
+
+
 // Rotating text animation
 const texts = ["Indian Mathematics", "Bhaskar Prabha Foundation"];
 let index = 0;
@@ -70,6 +65,4 @@ const updateText = () => {
     }, 500);
 };
 
-
-
-
+setInterval(updateText, 5000);
