@@ -123,6 +123,7 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .hero::before {
