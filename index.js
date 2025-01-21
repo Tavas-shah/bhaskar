@@ -44,7 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 hero.style.backgroundImage = `url('${images[currentImage]}')`;
             });
 
-            
+            // Optional: Auto-change every 5 seconds
+            setInterval(() => {
+                currentImage++;
+                if (currentImage >= images.length) {
+                    currentImage = 0;
+                }
+                hero.style.backgroundImage = `url('${images[currentImage]}')`;
+            }, 5000);
         });
 
 
