@@ -134,6 +134,36 @@ body {
     opacity: 0.1;
     animation: rotate 60s linear infinite;
 }
+.nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.3);
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev-btn {
+            left: 20px;
+        }
+
+        .next-btn {
+            right: 20px;
+        }
+
+
 
 @keyframes rotate {
     from { transform: rotate(0deg); }
@@ -149,19 +179,27 @@ body {
 
 .hero-title {
     font-size: 72px;
+    position: absolute;
+    top: 60px; /* Adjust this value to control how far down from the top */
+    left: 0%; /* Moves it more to the left (adjust the value as needed) */
+    transform: translateX(-50%) translateY(-50%); /* Centers vertically and adjusts horizontally */
     font-weight: 800;
-    margin-bottom: 20px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 1s forwards;
+    margin: 0;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
 }
-
 @keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
 
 .about-section {
     max-width: 1200px;
