@@ -417,22 +417,24 @@ body {
         width: 100%;
         display: block;
     }
-    .nav-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 20px;
-    }
-
     .hero-title {
-        font-size: 36px; /* Further reduce font size for small screens */
-        top: 40px; /* Adjusted for mobile layout */
+        font-size: 2.5rem;
+        top: 40px;
     }
 
-    .hero-content {
-        padding: 0 10px; /* Reduce padding for smaller screens */
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
     }
 
+    .prev-btn {
+        left: 5px;
+    }
 
+    .next-btn {
+        right: 5px;
+    }
 
     .gallery-grid {
         grid-template-columns: 1fr;
@@ -454,5 +456,47 @@ body {
 
     .footer-grid {
         gap: 30px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+        top: 30px;
+    }
+
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+}
+
+/* For landscape orientation on mobile */
+@media screen and (max-height: 480px) and (orientation: landscape) {
+    .hero-title {
+        font-size: 1.8rem;
+        top: 20px;
+    }
+
+    .nav-btn {
+        top: 50%;
+        transform: translateY(-50%) scale(0.8);
+    }
+}
+
+/* For tablets */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .hero-title {
+        font-size: 3.5rem;
+        top: 50px;
+    }
+}
+
+/* Ensure minimum touch target size for buttons on touch devices */
+@media (hover: none) {
+    .nav-btn {
+        min-width: 44px;
+        min-height: 44px;
     }
 }
