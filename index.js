@@ -54,7 +54,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 5000);
         });
 
-    }, 500);
-};
 
-setInterval(updateText, 5000);
