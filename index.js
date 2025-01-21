@@ -1,68 +1,52 @@
-// Initialize AOS (Animation on Scroll)
-AOS.init({
-    duration: 1000,
-    once: true
-});
-
-// Header scroll effect
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-    } else {
-        header.classList.remove('scrolled');
-    }
-});
-
 document.addEventListener('DOMContentLoaded', () => {
-            const hero = document.getElementById('hero');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            
-            // Array of image paths
-            const images = ['4.png', '5.png'];
-            let currentImage = 0;
+    // Initialize AOS (Animation on Scroll)
+    AOS.init({
+        duration: 1000,
+        once: true
+    });
 
-            // Initialize first image
-            hero.style.backgroundImage = `url('${images[currentImage]}')`;
+    // Header scroll effect
+    const header = document.querySelector('.header');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
 
-            // Previous button click handler
-            prevBtn.addEventListener('click', () => {
-                currentImage--;
-                if (currentImage < 0) {
-                    currentImage = images.length - 1;
-                }
-                hero.style.backgroundImage = `url('${images[currentImage]}')`;
-            });
+    const images = [
+        '4.png',
+        '5.png',
+        '/api/placeholder/400/500'
+    ];
+    let currentIndex = 0;
+    const imageElement = document.getElementById('currentImage');
 
-            // Next button click handler
-            nextBtn.addEventListener('click', () => {
-                currentImage++;
-                if (currentImage >= images.length) {
-                    currentImage = 0;
-                }
-                hero.style.backgroundImage = `url('${images[currentImage]}')`;
-            });
+    function changeImage(direction) {
+        currentIndex = (currentIndex + direction + images.length) % images.length;
+        imageElement.src = images[currentIndex];
+    }
 
-            
-        });
+    document.querySelector('.prev').addEventListener('click', () => changeImage(-1));
+    document.querySelector('.next').addEventListener('click', () => changeImage(1));
 
+    // Rotating text animation
+    const texts = ["Indian Mathematics", "Bhaskar Prabha Foundation"];
+    let index = 0;
+    const textElement = document.getElementById('rotating-text');
 
-// Rotating text animation
-const texts = ["Indian Mathematics", "Bhaskar Prabha Foundation"];
-let index = 0;
-const textElement = document.getElementById('rotating-text');
+    const updateText = () => {
+        textElement.style.opacity = '0';
+        textElement.style.transform = 'translateY(20px)';
 
-const updateText = () => {
-    textElement.style.opacity = '0';
-    textElement.style.transform = 'translateY(20px)';
-    
-    setTimeout(() => {
-        index = (index + 1) % texts.length;
-        textElement.textContent = texts[index];
-        textElement.style.opacity = '1';
-        textElement.style.transform = 'translateY(0)';
-    }, 500);
-};
+        setTimeout(() => {
+            index = (index + 1) % texts.length;
+            textElement.textContent = texts[index];
+            textElement.style.opacity = '1';
+            textElement.style.transform = 'translateY(0)';
+        }, 500);
+    };
 
-setInterval(updateText, 5000);
+    setInterval(updateText, 3000); // Change text every 3 seconds
+});
