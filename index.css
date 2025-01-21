@@ -117,22 +117,26 @@ body {
 }
 .container {
     max-width: 100%;
-    margin: 500 auto; /* Adjust the top margin */
-    margin-top: 30px;
+    height: 100vh; /* Full viewport height */
+    margin: 0 auto; /* Center horizontally */
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    display: flex; /* Flexbox for centering content */
+    justify-content: center;
+    align-items: center; /* Center the image-container */
+
+    
 }
 
 .image-container {
     position: relative;
     width: 100%;
-    height: 400px;
+    height: 100%; /* Full height of the container */
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px; /* Adjust the value as needed */
-    margin-bottom: 20px;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
 }
+
 
         .memorial-image {
             max-width: 100%;
