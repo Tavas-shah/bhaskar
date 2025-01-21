@@ -125,14 +125,17 @@ body {
     overflow: hidden;
     text-align: center;
     padding: 20px;
+    width: 100%;
 }
 
 .hero::before {
     content: '';
     position: absolute;
-    width: 200%;
-    height: 200%;
-    background: url('/api/placeholder/1920/1080') center/cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/api/placeholder/1920/1080') center/cover no-repeat;
     opacity: 0.1;
     animation: rotate 60s linear infinite;
 }
@@ -363,6 +366,38 @@ body {
 .hamburger span.active:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
+@media (max-width: 768px) {
+    .hero {
+        min-height: 100vh; /* Ensure minimum height on mobile */
+        height: auto; /* Allow height to adjust based on content */
+    }
+
+    .hero::before {
+        width: 100%; /* Reset width to prevent overflow */
+        height: 100%; /* Reset height to prevent overflow */
+        animation: none; /* Disable rotation on mobile to prevent performance issues */
+        transform: none; /* Reset any transforms */
+        background-size: cover; /* Ensure image covers the entire container */
+        background-position: center; /* Center the background image */
+    }
+}
+
+/* Adjust navigation buttons for better mobile visibility */
+@media (max-width: 768px) {
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5); /* Darker background for better visibility */
+        font-size: 16px;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
 
 @media (max-width: 768px) {
     .header {
@@ -424,24 +459,7 @@ body {
         width: 100%;
         display: block;
     }
-    .hero-title {
-        font-size: 2.5rem;
-        top: 40px;
-    }
-
-    .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 16px;
-    }
-
-    .prev-btn {
-        left: 5px;
-    }
-
-    .next-btn {
-        right: 5px;
-    }
+    
 
     .gallery-grid {
         grid-template-columns: 1fr;
