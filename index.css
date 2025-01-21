@@ -433,10 +433,6 @@ body {
     }
 
 
-    .hero-title {
-        font-size: 48px;
-        top: 20px;
-    }
 
     .gallery-grid {
         grid-template-columns: 1fr;
