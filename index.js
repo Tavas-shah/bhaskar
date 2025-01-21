@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const images = ['4.png', '5.png'];
     let currentImage = 0;
     let isAnimating = false;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let autoplayInterval;
 
     // Create slides and dots
     function createSlides() {
@@ -86,25 +89,93 @@ document.addEventListener('DOMContentLoaded', () => {
         goToSlide(prevIndex);
     }
 
+    // Touch handlers
+    function handleTouchStart(e) {
+        touchStartX = e.touches[0].clientX;
+        clearInterval(autoplayInterval);
+    }
+
+    function handleTouchMove(e) {
+        if (isAnimating) return;
+        touchEndX = e.touches[0].clientX;
+    }
+
+    function handleTouchEnd() {
+        const touchDiff = touchStartX - touchEndX;
+        const minSwipeDistance = 50; // Minimum distance for swipe
+
+        if (Math.abs(touchDiff) > minSwipeDistance) {
+            if (touchDiff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+
+        // Reset touch coordinates
+        touchStartX = 0;
+        touchEndX = 0;
+
+        // Restart autoplay
+        startAutoplay();
+    }
+
+    // Initialize autoplay
+    function startAutoplay() {
+        clearInterval(autoplayInterval);
+        autoplayInterval = setInterval(nextSlide, 5000);
+    }
+
     // Initialize slides
     createSlides();
 
     // Event listeners
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-
-    // Auto-change every 5 seconds
-    let autoplayInterval = setInterval(nextSlide, 5000);
-
-    // Pause autoplay on hover
-    hero.addEventListener('mouseenter', () => {
-        clearInterval(autoplayInterval);
+    prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        prevSlide();
+    });
+    
+    nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        nextSlide();
     });
 
-    // Resume autoplay when mouse leaves
-    hero.addEventListener('mouseleave', () => {
-        autoplayInterval = setInterval(nextSlide, 5000);
+    // Touch events
+    hero.addEventListener('touchstart', handleTouchStart, { passive: true });
+    hero.addEventListener('touchmove', handleTouchMove, { passive: true });
+    hero.addEventListener('touchend', handleTouchEnd);
+
+    // Handle visibility change
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            clearInterval(autoplayInterval);
+        } else {
+            startAutoplay();
+        }
     });
+
+    // Handle resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            // Update any necessary dimensions
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                slide.style.height = `${hero.offsetHeight}px`;
+            });
+        }, 250);
+    });
+
+    // Start autoplay
+    startAutoplay();
+
+    // Pause autoplay on hover (desktop only)
+    const isTouchDevice = 'ontouchstart' in window;
+    if (!isTouchDevice) {
+        hero.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+        hero.addEventListener('mouseleave', startAutoplay);
+    }
 });
 // Rotating text animation
 const texts = ["Indian Mathematics", "Bhaskar Prabha Foundation"];
