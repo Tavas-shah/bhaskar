@@ -55,3 +55,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
 
+// Rotating text animation
+const texts = ["Indian Mathematics", "Bhaskar Prabha Foundation"];
+let index = 0;
+const textElement = document.getElementById('rotating-text');
+
+const updateText = () => {
+    textElement.style.opacity = '0';
+    textElement.style.transform = 'translateY(20px)';
+    
+    setTimeout(() => {
+        index = (index + 1) % texts.length;
+        textElement.textContent = texts[index];
+        textElement.style.opacity = '1';
+        textElement.style.transform = 'translateY(0)';
+    }, 500);
+};
+
+
+
+
