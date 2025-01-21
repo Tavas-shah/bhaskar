@@ -116,16 +116,16 @@ body {
 }
 
 .hero {
+    position: relative;
+    width: 100%;
     height: 100vh;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
     overflow: hidden;
     text-align: center;
     padding: 20px;
-    width: 100%;
 }
 
 .hero::before {
@@ -139,7 +139,27 @@ body {
     opacity: 0.1;
     animation: rotate 60s linear infinite;
 }
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+.hero-title {
+    position: relative; /* Change from absolute to relative */
+    font-size: 4.5rem;
+    font-weight: 800;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out;
+    margin: 0 auto; /* Center the title */
+    width: 90%;
+    max-width: 1200px;
+    transform: none; /* Remove transform */
+    top: auto; /* Remove top positioning */
+}
 .nav-btn {
     position: absolute;
     top: 50%;
@@ -177,29 +197,6 @@ body {
     to { transform: rotate(360deg); }
 }
 
-.hero-content {
-    text-align: center;
-    color: var(--text-light);
-    z-index: 1;
-    padding: 0 20px;
-    width: 100%;
-    position: relative;
-}
-
-.hero-title {
-    font-size: 4.5rem; /* Using rem for better scaling */
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-weight: 800;
-    margin: 0;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 1s ease-out;
-    width: 90%; /* Prevent text from touching edges */
-    max-width: 1200px; /* Maximum width for very large screens */
-}
 
 @keyframes fadeInUp {
     from {
@@ -366,38 +363,7 @@ body {
 .hamburger span.active:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
 }
-@media (max-width: 768px) {
-    .hero {
-        min-height: 100vh; /* Ensure minimum height on mobile */
-        height: auto; /* Allow height to adjust based on content */
-    }
 
-    .hero::before {
-        width: 100%; /* Reset width to prevent overflow */
-        height: 100%; /* Reset height to prevent overflow */
-        animation: none; /* Disable rotation on mobile to prevent performance issues */
-        transform: none; /* Reset any transforms */
-        background-size: cover; /* Ensure image covers the entire container */
-        background-position: center; /* Center the background image */
-    }
-}
-
-/* Adjust navigation buttons for better mobile visibility */
-@media (max-width: 768px) {
-    .nav-btn {
-        width: 40px;
-        height: 40px;
-        background: rgba(0, 0, 0, 0.5); /* Darker background for better visibility */
-        font-size: 16px;
-    }
-
-    .prev-btn {
-        left: 10px;
-    }
-
-    .next-btn {
-        right: 10px;
-    }
 
 @media (max-width: 768px) {
     .header {
@@ -460,7 +426,40 @@ body {
         display: block;
     }
     
+    .hero {
+        min-height: 100vh;
+        height: auto;
+        padding: 80px 20px; /* Add padding to account for fixed header */
+    }
 
+    .hero::before {
+        animation: none;
+    }
+
+    .hero-content {
+        padding: 20px 0;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .nav-btn {
+        width: 44px; /* Minimum touch target size */
+        height: 44px;
+        background: rgba(0, 0, 0, 0.6);
+        font-size: 18px;
+    }
+
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
     .gallery-grid {
         grid-template-columns: 1fr;
     }
@@ -482,46 +481,78 @@ body {
     .footer-grid {
         gap: 30px;
     }
+    
 }
 
 @media screen and (max-width: 480px) {
+    .hero {
+        padding: 60px 15px;
+    }
+
     .hero-title {
         font-size: 2rem;
-        top: 30px;
-    }
-
-    .nav-btn {
-        width: 35px;
-        height: 35px;
-        font-size: 14px;
     }
 }
 
-/* For landscape orientation on mobile */
+/* Landscape mode */
 @media screen and (max-height: 480px) and (orientation: landscape) {
+    .hero {
+        padding: 40px 15px;
+    }
+
     .hero-title {
         font-size: 1.8rem;
-        top: 20px;
     }
 
     .nav-btn {
-        top: 50%;
-        transform: translateY(-50%) scale(0.8);
+        transform: scale(0.8);
     }
 }
 
-/* For tablets */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .hero-title {
-        font-size: 3.5rem;
-        top: 50px;
+/* Fix mobile navigation */
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 15px;
+    }
+
+    .nav-links {
+        background: white;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        display: none;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        margin-top: 10px;
     }
 }
 
-/* Ensure minimum touch target size for buttons on touch devices */
+/* Fix touch interactions */
 @media (hover: none) {
     .nav-btn {
-        min-width: 44px;
-        min-height: 44px;
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-btn:active {
+        transform: translateY(-50%) scale(0.95);
+    }
+
+    .hero-content {
+        user-select: none; /* Prevent text selection on touch */
     }
 }
