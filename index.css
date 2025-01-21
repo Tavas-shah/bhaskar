@@ -123,6 +123,7 @@ body {
     display: flex; /* Flexbox for centering content */
     justify-content: center;
     align-items: center; /* Center the image-container */
+    margin-top: 40px;
 
     
 }
@@ -135,6 +136,7 @@ body {
     justify-content: center;
     align-items: center;
     background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    margin-bottom: 20px;
 }
 
 
