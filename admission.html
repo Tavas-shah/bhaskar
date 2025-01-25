@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bhaskar Prabha Foundation</title>
+  <style>
+    :root {
+      --primary-color: #1e90ff;
+      --accent-color: #ff5722;
+      --background-color: #f0f8ff;
+      --text-color: #333;
+      --box-shadow: 0 4px 15px rgba(255, 87, 34, 0.1);
+      --border-radius: 15px;
+      --transition-duration: 0.3s;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: linear-gradient(145deg, #fff, var(--background-color));
+      border-radius: var(--border-radius);
+      padding: 40px;
+      box-shadow: var(--box-shadow);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1, h3 {
+      color: var(--primary-color);
+    }
+
+    .feature {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: var(--transition-duration);
+      cursor: pointer;
+    }
+
+    .feature:hover {
+      background-color: #fff;
+      transform: translateX(10px);
+      box-shadow: var(--box-shadow);
+    }
+
+    .feature i {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      transition: var(--transition-duration);
+    }
+
+    .feature:hover i {
+      color: var(--accent-color);
+      transform: scale(1.2) rotate(15deg);
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .cta a {
+      color: var(--accent-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .screenshot img {
+      max-width: 100%;
+      height: auto;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="content">
+      <h1>Warm Greetings to All Math Enthusiasts!</h1>
+      <p>Have you ever wondered WHY formulas exist and HOW they were created? Do you feel that just memorizing math isn't enough, and you want to truly understand every detail? Welcome to BHASKAR PRABHA FOUNDATION where we don't just teach math - we help you experience it!</p>
+
+      <div class="features">
+        <div class="feature">
+          <i class="icon-understand">🧠</i>
+          <div>
+            <h3>Understand, Don't Just Memorize</h3>
+            <p>Learn the real logic behind every formula</p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="icon-discussion">💬</i>
+          <div>
+            <h3>Discussion-Based Learning</h3>
+            <p>Explore math through questions and open conversations</p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="icon-guidance">🧭</i>
+          <div>
+            <h3>Doubt Solving & Personal Guidance</h3>
+            <p>Every student gets personal attention</p>
+          </div>
+        </div>
+        <div class="feature">
+          <i class="icon-discovery">🔍</i>
+          <div>
+            <h3>Mathematics is about Discovering Truths</h3>
+            <p>It's not about solving problems, it's about discovering truths.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cta">
+        <p>Come, be part of this amazing journey!</p>
+        <p>Mail- <a href="mailto:info@bhaskarprabha.org">info@bhaskarprabha.org</a></p>
+        <p>Contact: <a href="tel:8275281687">8275281687</a></p>
+      </div>
+    </div>
+
+    <div class="screenshot">
+      <img src="admission.png" alt="Bhaskar Prabha Foundation Preview">
+    </div>
+  </div>
+</body>
+</html>
