@@ -1,11 +1,14 @@
 :root {
-      --primary-color: #1e90ff;
-      --accent-color: #ff5722;
-      --background-color: #f0f8ff;
-      --text-color: #333;
-      --box-shadow: 0 4px 15px rgba(255, 87, 34, 0.1);
-      --border-radius: 15px;
-      --transition-duration: 0.3s;
+     --primary-color: #1e90ff; /* Vibrant blue */
+    --accent-color: #ff5722; /* Bold orange */
+    --secondary-color: #1c5d99; /* Defined secondary color */
+    --background-color: #f0f8ff; /* Light background */
+    --text-color: #333; /* Dark gray for text */
+    --text-light: #f8f8f8; /* Off-white for light text */
+    --box-shadow: 0 4px 15px rgba(255, 87, 34, 0.1);
+    --border-radius: 15px;
+    --transition-duration: 0.3s;
+    --transition: all var(--transition-duration) ease-in-out;
 }
 
 * {
@@ -18,6 +21,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     overflow-x: hidden;
+    background-color: var(--background-color);
 }
 
 .header {
@@ -87,6 +91,7 @@ body {
 .dropdown-trigger {
     cursor: pointer;
     padding: 5px 0; /* Ensure same padding as other links */
+    transition: var(--transition);
 }
 
 .dropdown-content {
@@ -94,10 +99,10 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: white;
+    background-color: var(--background-color);
     min-width: 160px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     z-index: 1000;
 }
 
@@ -107,6 +112,7 @@ body {
     text-decoration: none;
     display: block;
     white-space: nowrap;
+    transition: var(--transition);
 }
 
 .dropdown:hover .dropdown-content {
@@ -114,13 +120,13 @@ body {
 }
 
 .dropdown-content a:hover {
-    background-color: #f8f8f8;
+    background-color: rgba(30, 144, 255, 0.1);
 }
 .container {
     max-width: 100%;
     height: 80vh; /* Full viewport height */
     margin: 0 auto; /* Center horizontally */
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(135deg, var(--primary-color) 40%, var(--accent-color));
     display: flex; /* Flexbox for centering content */
     justify-content: center;
     align-items: center; /* Center the image-container */
@@ -138,7 +144,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    background: linear-gradient(135deg, var(--primary-color) 40%, var(--accent-color));
     margin-bottom: 20px;
    
 }
@@ -182,13 +188,12 @@ body {
 
 .card {
     background: white;
-    border-radius: 20px;
+    border-radius: var(--border-radius);
     padding: 40px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--box-shadow);
     transform: translateY(0);
     transition: var(--transition);
 }
-
 .card:hover {
     transform: translateY(-10px);
 }
