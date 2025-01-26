@@ -1,12 +1,5 @@
 // Loading animation
-document.addEventListener('DOMContentLoaded', () => {
-    const loader = document.getElementById('loader');
-    const content = document.getElementById('content');
-    setTimeout(() => {
-        loader.style.display = 'none';
-        content.classList.add('visible');
-    }, 7000);
-});
+
 
 // Navbar scroll handling
 let lastScrollY = window.scrollY;
