@@ -1,12 +1,12 @@
 :root {
-            --primary: #ffa500;
-            --primary-light: #ffd700;
-            --secondary: #ff8c00;
-            --accent: #ff4500;
-            --background: #fff5e6;
-            --text: #4a4a4a;
-            --shadow: 0 8px 30px rgba(255, 165, 0, 0.15);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --primary: #2563eb;
+    --primary-light: #60a5fa;
+    --secondary: #f97316;
+    --accent: #f97316;
+    --background: #f0f4f8;
+    --text: #1f2937;
+    --shadow: 0 10px 25px rgba(37, 99, 235, 0.1);
+    --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
@@ -18,7 +18,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--background), #ffe0b2);
+    background: linear-gradient(135deg, var(--background), #e0e7f3);
     color: var(--text);
     line-height: 1.6;
     min-height: 100vh;
@@ -35,7 +35,7 @@ body {
     padding: 1rem;
     z-index: 1000;
     transform: translateY(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.4s ease;
 }
 
 .navbar.hidden {
@@ -53,7 +53,7 @@ body {
 .nav-logo {
     font-size: 1.5rem;
     font-weight: bold;
-    background: linear-gradient(45deg, var(--primary), var(--accent));
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -78,7 +78,7 @@ body {
     width: 0;
     height: 2px;
     background: var(--primary);
-    transition: width 0.3s ease;
+    transition: width 0.4s ease;
 }
 
 .nav-links a:hover::after {
@@ -97,7 +97,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(240, 244, 248, 0.7));
     margin: -100px -20px 50px;
     padding: 0 20px;
     position: relative;
@@ -115,7 +115,7 @@ body {
     font-size: 2rem;
     opacity: 0;
     animation: floatUp 15s infinite linear;
-    text-shadow: 0 0 10px rgba(255, 87, 34, 0.3);
+    text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
     font-family: 'Times New Roman', serif;
     font-weight: bold;
     z-index: 0;
@@ -161,7 +161,7 @@ body {
 
 .section-title h2 {
     font-size: 2.5rem;
-    background: linear-gradient(45deg, var(--primary), var(--accent));
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
@@ -367,12 +367,12 @@ h1 {
 .guidelines-list li:hover {
     transform: translateX(10px);
     background: white;
-    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.1);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.1);
 }
 
 .guidelines-list li:hover i {
     transform: scale(1.2) rotate(15deg);
-    color: var(--accent);
+    color: var(--secondary);
 }
 
 .contact-grid {
@@ -387,7 +387,7 @@ h1 {
     background: white;
     border-radius: 15px;
     transition: var(--transition);
-    border: 1px solid rgba(255, 87, 34, 0.1);
+    border: 1px solid rgba(37, 99, 235, 0.1);
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -410,7 +410,7 @@ h1 {
 
 .contact-item:hover i {
     transform: scale(1.2);
-    color: var(--accent);
+    color: var(--secondary);
 }
 
 .map-container {
@@ -436,7 +436,7 @@ h1 {
     border-radius: 30px;
     margin: 20px 0;
     transition: var(--transition);
-    box-shadow: 0 4px 15px rgba(255, 87, 34, 0.3);
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
     position: relative;
     overflow: hidden;
     font-weight: bold;
