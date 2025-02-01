@@ -47,12 +47,38 @@ body {
     justify-content: space-between;
     align-items: center; /* Ensure all items, including the dropdown, are aligned */
 }
-.logo {
-    font-size: 28px;
-    font-weight: 800;
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-image {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text h1 {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.logo-text h1:first-child {
     color: var(--secondary-color);
-    text-decoration: none;
-    letter-spacing: -1px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo-text h1:last-child {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 
