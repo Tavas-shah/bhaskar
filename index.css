@@ -24,32 +24,20 @@ body {
     background-color: var(--background-color);
 }
 .top-header {
-    background: white;
+    background: var(--background-color);
     padding: var(--padding-default) 0;
-    border-bottom: 1px solid rgba(16, 126, 212, 0.1);
+    border-bottom: 1px solid rgba(30, 144, 255, 0.1);
     box-shadow: var(--box-shadow);
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--padding-default);
 }
 
 .logo {
     width: 110px;
     height: 100px;
-    transition: var(--transition-duration);
+    transition: var(--transition);
 }
 
 .logo:hover {
     transform: scale(1.05);
-}
-
-.logo-text {
-    margin-left: 15px;
 }
 
 .logo-text h1 {
@@ -64,31 +52,17 @@ body {
 
 /* Navigation Styles */
 .main-nav {
-    background: var(--text-light);
+    background: var(--secondary-color);
     padding: 10px 0;
 }
 
-.nav-container {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 var(--padding-default);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-links {
-    display: flex;
-    gap: 25px;
-}
-
 .nav-links a {
-    color: white;
+    color: var(--text-light);
     text-decoration: none;
     font-size: 0.9rem;
     padding: 5px 0;
     position: relative;
-    transition: var(--transition-duration);
+    transition: var(--transition);
 }
 
 .nav-links a:after {
@@ -98,52 +72,27 @@ body {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: var(--secondary-color);
+    background-color: var(--accent-color);
     transition: width var(--transition-duration);
 }
 
 .nav-links a:hover:after {
     width: 100%;
 }
-.dropdown {
-    position: relative;
-    display: flex; /* Flex ensures alignment */
-    align-items: center; /* Align the dropdown trigger to the center */
-}
-
-.dropdown-trigger {
-    cursor: pointer;
-    padding: 5px 0; /* Ensure same padding as other links */
-    transition: var(--transition);
-}
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
     background-color: var(--background-color);
-    min-width: 160px;
     box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     border-radius: var(--border-radius);
-    z-index: 1000;
 }
 
 .dropdown-content a {
     color: var(--secondary-color);
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    white-space: nowrap;
     transition: var(--transition);
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 .dropdown-content a:hover {
-    background-color: rgba(30, 144, 255, 0.1);
+    background-color: rgba(255, 87, 34, 0.1);
 }
 
 
