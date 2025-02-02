@@ -55,3 +55,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setInterval(updateText, 3000); // Change text every 3 seconds
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    mobileMenuBtn?.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        this.classList.toggle('active');
+    });
+
+    dropdowns.forEach(dropdown => {
+        if (window.innerWidth <= 768) {
+            dropdown.addEventListener('click', function(e) {
+                this.classList.toggle('active');
+                e.stopPropagation();
+            });
+        }
+    });
+});
