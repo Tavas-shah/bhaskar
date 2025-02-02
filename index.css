@@ -24,100 +24,159 @@ body {
     background-color: var(--background-color);
 }
 .top-header {
-    background: var(--background-color);
-    padding: var(--padding-default) 0;
-    border-bottom: 1px solid rgba(30, 144, 255, 0.1);
-    box-shadow: var(--box-shadow);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+    background: linear-gradient(to right, #ffffff, #f0f7ff);
+    padding: 1.2rem 0;
+    border-bottom: 2px solid rgba(37, 99, 235, 0.1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .logo-container {
-    display: flex;
-    align-items: center;
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 0 var(--padding-default);
-    position: relative;
+    padding: 0 2rem;
+}
+
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-left: -3rem; /* Adjusts entire content left */
 }
 
 .logo {
-    width: 110px;
-    height: 100px;
-    transition: var(--transition);
+    width: 120px;
+    height: 110px;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+    transition: transform 0.3s ease;
 }
 
 .logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(-2deg);
 }
 
 .logo-text {
-    position: absolute;
-    left: 45%; /* Adjusted to move slightly left from center */
-    transform: translateX(-50%);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.logo-text h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
+.primary-title {
+    font-size: 2rem;
     color: var(--primary-color);
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.constitution-logo {
-    width: 100px;
-    margin-left: auto;
+.secondary-title {
+    font-size: 1.75rem;
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin: 0;
 }
 
-/* Navigation Styles */
 .main-nav {
-    background: var(--secondary-color);
-    padding: 10px 0;
+    background: linear-gradient(to right, var(--secondary-color), #1d4ed8);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    align-items: center;
 }
 
 .nav-links a {
     color: var(--text-light);
     text-decoration: none;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 5px 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.dropdown {
     position: relative;
-    transition: var(--transition);
-}
-
-.nav-links a:after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--accent-color);
-    transition: width var(--transition-duration);
-}
-
-.nav-links a:hover:after {
-    width: 100%;
 }
 
 .dropdown-content {
-    background-color: var(--background-color);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    border-radius: var(--border-radius);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown:hover .dropdown-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .dropdown-content a {
-    color: var(--secondary-color);
-    transition: var(--transition);
+    color: var(--text-dark);
+    padding: 0.75rem 1.5rem;
+    display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: rgba(255, 87, 34, 0.1);
+    background-color: #f3f4f6;
+    color: var(--secondary-color);
+    transform: translateX(5px);
 }
 
+@media (max-width: 768px) {
+    .brand-wrapper {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .logo-text {
+        align-items: center;
+    }
+
+    .primary-title,
+    .secondary-title {
+        font-size: 1.5rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .dropdown-content {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+    }
+}
 
 .image-container {
     position: relative;
