@@ -28,6 +28,19 @@ body {
     padding: var(--padding-default) 0;
     border-bottom: 1px solid rgba(30, 144, 255, 0.1);
     box-shadow: var(--box-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-default);
+    position: relative;
 }
 
 .logo {
@@ -40,9 +53,18 @@ body {
     transform: scale(1.05);
 }
 
+.logo-text {
+    position: absolute;
+    left: 45%; /* Adjusted to move slightly left from center */
+    transform: translateX(-50%);
+    text-align: center;
+}
+
 .logo-text h1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
     color: var(--primary-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .constitution-logo {
@@ -59,7 +81,8 @@ body {
 .nav-links a {
     color: var(--text-light);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: bold;
     padding: 5px 0;
     position: relative;
     transition: var(--transition);
